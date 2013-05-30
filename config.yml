@@ -17,6 +17,3 @@ SoundToPlay: eggpop
 OnlinePlayerChecker: true
 #   This plugin use MetricsLite to know how many server use [Meow] and allow me to know if it worth keeping it alive ;) (true - false)
 Metrics: true
-#   If a player do '/meowstop' his name will be added below. Any player here will NOT ear a sound when meow'd
-Blockers: 
-- NoMeowForMe

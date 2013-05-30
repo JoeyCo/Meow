@@ -10,84 +10,99 @@ import org.mcstats.MetricsLite;
 
 public class PluginConf {
 	
-    private File CustomConfigFile = null;
-    private FileConfiguration CustomConfig = null;
-    
+    private File LanguageFile= null;
+    private File BlockerFile = null;
+    private File ConfigFile = null;
+    private FileConfiguration LanguageFileConfig = null;
+    private FileConfiguration BlockerFileConfig = null;
+    private FileConfiguration ConfigFileConfig = null;
 	public static Meow plugin;
 	public PluginConf(Meow instance){
 	plugin = instance;
 	}
 	
     public void loadConfiguration(){
-    	CustomConfigFile = new File(plugin.getDataFolder(), "language.yml");
-    	if(!CustomConfigFile.exists()){
+    	LanguageFile = new File(plugin.getDataFolder(), "language.yml");
+    	if(!LanguageFile.exists()){
     	plugin.saveResource("language.yml", false);
+    	}
+    	BlockerFile = new File(plugin.getDataFolder(), "blockers.yml");
+    	if(!BlockerFile.exists()){
+    	plugin.saveResource("blockers.yml", false);
     	}
     	plugin.saveDefaultConfig();
     	
-        CustomConfig = YamlConfiguration.loadConfiguration(CustomConfigFile);
+    	ConfigFile = new File(plugin.getDataFolder(), "config.yml");
     	
-    	plugin.reloadConfig();
+    	LanguageFileConfig = YamlConfiguration.loadConfiguration(LanguageFile);
+    	BlockerFileConfig = YamlConfiguration.loadConfiguration(BlockerFile);
+    	ConfigFileConfig = YamlConfiguration.loadConfiguration(ConfigFile);
+    	
     	try {
-			CustomConfig.load(CustomConfigFile);
+    		LanguageFileConfig.load(LanguageFile);
 		} catch (Exception e1) {
 			System.out.println("[Meow] Failed to load language.yml");
 			e1.printStackTrace();
 		}
-    	
-    	
-    plugin.cooldownInSeconds = plugin.getConfig().getInt("CooldownInSeconds");
-    plugin.configPlayers = plugin.getConfig().getStringList("Blockers");
+    	try {
+    		BlockerFileConfig.load(BlockerFile);
+		} catch (Exception e1) {
+			System.out.println("[Meow] Failed to load blockers.yml");
+			e1.printStackTrace();
+		}
+
+    plugin.cooldownInSeconds = ConfigFileConfig.getInt("CooldownInSeconds");
+    plugin.configPlayers = BlockerFileConfig.getStringList("Blockers");
     
-    plugin.MoewdBy = CustomConfig.getString("MoewdBy");
-    plugin.YouMeowd = CustomConfig.getString("YouMeowd");
-    plugin.PnotOnline = CustomConfig.getString("PnotOnline");
-    plugin.SelfMeow = CustomConfig.getString("SelfMeow");
-    plugin.SoundEnabled = CustomConfig.getString("SoundEnabled");
-    plugin.SoundDisabled = CustomConfig.getString("SoundDisabled");
-    plugin.SecondToUse = CustomConfig.getString("SecondToUse");
-    plugin.PleaseWait = CustomConfig.getString("PleaseWait");
-    plugin.AsLoaded = CustomConfig.getString("AsLoaded");
-    plugin.Asunloaded = CustomConfig.getString("Asunloaded");
-    plugin.HelpToSee = CustomConfig.getString("HelpToSee");
-    plugin.PlayerNotFound = CustomConfig.getString("PlayerNotFound");
-    plugin.NoPerm = CustomConfig.getString("NoPerm");
-    plugin.CantFindMeow = CustomConfig.getString("CantFindMeow");
-    plugin.EverbodyMoewd =  CustomConfig.getString("EverbodyMoewd");
-    plugin.YouMeowEvery = CustomConfig.getString("YouMeowEvery");
-    plugin.ConfReloaded = CustomConfig.getString("ConfReloaded");
-    plugin.ConfReload = CustomConfig.getString("ConfReload");
-    plugin.SendEverybody = CustomConfig.getString("SendEverybody");
-    plugin.SoundToggle = CustomConfig.getString("SoundToggle");
-    plugin.SendaMeow = CustomConfig.getString("SendaMeow");
-    plugin.ReplyToMeow = CustomConfig.getString("ReplyToMeow");
-    plugin.PluginBy = CustomConfig.getString("PluginBy");
-    plugin.GotMeowdBack = CustomConfig.getString("GotMeowdBack");
-    plugin.MeowdBack = CustomConfig.getString("MeowdBack");
-    plugin.MBDisabled = CustomConfig.getString("MBDisabled");
-    plugin.PlayerListFailed = CustomConfig.getString("PlayerListFailed");
-    plugin.JoinDisabled = CustomConfig.getString("JoinDisabled");
-    plugin.MSDisabled = CustomConfig.getString("MSDisabled");
-    plugin.MTuse = CustomConfig.getString("MTuse");
-    plugin.SendaTell = CustomConfig.getString("SendaTell");
+    plugin.MoewdBy = LanguageFileConfig.getString("MoewdBy");
+    plugin.YouMeowd = LanguageFileConfig.getString("YouMeowd");
+    plugin.PnotOnline = LanguageFileConfig.getString("PnotOnline");
+    plugin.SelfMeow = LanguageFileConfig.getString("SelfMeow");
+    plugin.SoundEnabled = LanguageFileConfig.getString("SoundEnabled");
+    plugin.SoundDisabled = LanguageFileConfig.getString("SoundDisabled");
+    plugin.SecondToUse = LanguageFileConfig.getString("SecondToUse");
+    plugin.PleaseWait = LanguageFileConfig.getString("PleaseWait");
+    plugin.AsLoaded = LanguageFileConfig.getString("AsLoaded");
+    plugin.Asunloaded = LanguageFileConfig.getString("Asunloaded");
+    plugin.HelpToSee = LanguageFileConfig.getString("HelpToSee");
+    plugin.PlayerNotFound = LanguageFileConfig.getString("PlayerNotFound");
+    plugin.NoPerm = LanguageFileConfig.getString("NoPerm");
+    plugin.CantFindMeow = LanguageFileConfig.getString("CantFindMeow");
+    plugin.EverbodyMoewd =  LanguageFileConfig.getString("EverbodyMoewd");
+    plugin.YouMeowEvery = LanguageFileConfig.getString("YouMeowEvery");
+    plugin.ConfReloaded = LanguageFileConfig.getString("ConfReloaded");
+    plugin.ConfReload = LanguageFileConfig.getString("ConfReload");
+    plugin.SendEverybody = LanguageFileConfig.getString("SendEverybody");
+    plugin.SoundToggle = LanguageFileConfig.getString("SoundToggle");
+    plugin.SendaMeow = LanguageFileConfig.getString("SendaMeow");
+    plugin.ReplyToMeow = LanguageFileConfig.getString("ReplyToMeow");
+    plugin.PluginBy = LanguageFileConfig.getString("PluginBy");
+    plugin.GotMeowdBack = LanguageFileConfig.getString("GotMeowdBack");
+    plugin.MeowdBack = LanguageFileConfig.getString("MeowdBack");
+    plugin.MBDisabled = LanguageFileConfig.getString("MBDisabled");
+    plugin.PlayerListFailed = LanguageFileConfig.getString("PlayerListFailed");
+    plugin.JoinDisabled = LanguageFileConfig.getString("JoinDisabled");
+    plugin.MSDisabled = LanguageFileConfig.getString("MSDisabled");
+    plugin.MTuse = LanguageFileConfig.getString("MTuse");
+    plugin.SendaTell = LanguageFileConfig.getString("SendaTell");
 
     PluginManager pm = plugin.getServer().getPluginManager();
     
-    if(plugin.getConfig().getBoolean("OnlinePlayerChecker") == true){
+    if(ConfigFileConfig.getBoolean("OnlinePlayerChecker") == true){
 		try {
 			pm.registerEvents(plugin.OpC, plugin);
 		} catch (Exception e) {
 			System.out.println(plugin.prefix + " OnlinePlayerChecker failed to start. Please report this to JoeyCo(BukkitDev)");
 		}
 	}
-    if(plugin.getConfig().getBoolean("SoundOnJoin") == true){
+    if(ConfigFileConfig.getBoolean("SoundOnJoin") == true){
 		try {
 		pm.registerEvents(plugin.SoJ, plugin);
 		} catch (Exception e) {
 			System.out.println(plugin.prefix + " SoundOnJoin failed to start. Please report this to JoeyCo(BukkitDev)");
 		}
 	}
-    if(plugin.getConfig().getBoolean("Metrics") == true) {
+    if(ConfigFileConfig.getBoolean("Metrics") == true) {
 		try {
 			MetricsLite metrics = new MetricsLite(plugin);
 			metrics.start();
@@ -95,7 +110,7 @@ public class PluginConf {
 			System.out.println(plugin.prefix + " Metrics failed to start. Please report this to JoeyCo(BukkitDev)");
 		}
 	} 
-	 String SoundForMeow = plugin.getConfig().getString("ReplaceMeowWith").toLowerCase();
+	 String SoundForMeow = ConfigFileConfig.getString("ReplaceMeowWith").toLowerCase();
     	if(SoundForMeow.equalsIgnoreCase("meow")){
     		plugin.MeowSound = plugin.Meow;
     	}
@@ -114,8 +129,8 @@ public class PluginConf {
 		 plugin.MeowSound = plugin.Meow;
 		 System.out.println(plugin.prefix + plugin.MSDisabled);
 		 }
-    	if(plugin.getConfig().getBoolean("SoundOnJoin") == true){
-    		String SoundPlay = plugin.getConfig().getString("SoundToPlay").toLowerCase();
+    	if(ConfigFileConfig.getBoolean("SoundOnJoin") == true){
+    		String SoundPlay = ConfigFileConfig.getString("SoundToPlay").toLowerCase();
     		 if(SoundPlay.equalsIgnoreCase("eggpop")){
 	    		plugin.JoinSound = plugin.EggPop;
 			 }
