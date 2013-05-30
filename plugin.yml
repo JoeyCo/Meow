@@ -1,0 +1,42 @@
+name: Meow
+main: me.thej0y.meow.Meow
+version: 1.0
+author: TheJ0y
+website: http://dev.bukkit.org/server-mods/meow/
+description: >
+             This plugin is used to send a "meow" to the targeted player. An easy way to get attention!
+commands:
+  meow:
+    description: Send a sound (meow) to the selected player. /meow [player]
+    aliases: [m]
+  meowstop:
+    description: Block meow sounds for self. Use again to re-enable
+    aliases: [ms]
+  meowhelp:
+    description: Show commands for Meow
+    aliases: [mh]
+  meowreload:
+    description: Reload language.yml
+    aliases: [mload]
+  meowall:
+    description: Allow to send a server wide meow with /meowall
+    aliases: [ma]
+  rmeow:
+    description: Meow back who meow'd you
+    aliases: [rm]
+  meowtell:
+    description: Send a meow with a custom message
+    aliases: [mt]
+permissions:
+  Meow.meow:
+    description: Allow user to use Meow someone when opOnly is 'true'
+    default: op
+  Meow.nocool:
+    description: Users with this permission do not have cooldown
+    default: op
+  Meow.reload:
+    description: Allow user to reload config.yml and language.yml
+    default: op
+  Meow.server:
+    description: Allow to use /meowall (send a meow to everybody)
+    default: op

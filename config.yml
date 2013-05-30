@@ -1,0 +1,22 @@
+# [Meow]config -- Plugin by: TheJ0y -- SET "opOnly: true" TO USE PERMISSIONS -- "DingNotMeow" REPLACE MEOWS WITH DINGS!
+# Version: 1.0 B1.5.2
+#   Set the sound you want to use instead of "Meow"
+####meow, eggpop, teleport, explode, plong.
+ReplaceMeowWith: meow
+#   The minimum time(in seconds) a player must wait between each meow/rmeow
+CooldownInSeconds: 30
+#   Do /rmeow use cooldown? (if false, players can /rmeow at will) (true - false)
+rMeowCooldown: true
+######################### Join Sound #########################################################################
+#   Play a sound when a player join? (true - false)
+SoundOnJoin: true
+#   Sounds: meow, eggpop, teleport, explode, plong.
+SoundToPlay: eggpop
+######################### Misc #########################################################################
+#   Detect player name in chat and set them GREEN if they are online!(must be exact name... prevent bugs) (true - false)
+OnlinePlayerChecker: true
+#   This plugin use MetricsLite to know how many server use [Meow] and allow me to know if it worth keeping it alive ;) (true - false)
+Metrics: true
+#   If a player do '/meowstop' his name will be added below. Any player here will NOT ear a sound when meow'd
+Blockers: 
+- NoMeowForMe
