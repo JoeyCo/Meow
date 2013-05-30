@@ -1,3 +1,3 @@
-#   If a player do '/meowstop (/ms)' his name will be added below. Any player here will NOT ear a sound when meow'd
+#   If a player do '/meowstop' or '/ms' his name will be added below. Any player here will NOT ear a sound when meow'd
 Blockers: 
 - NoMeowForMe
