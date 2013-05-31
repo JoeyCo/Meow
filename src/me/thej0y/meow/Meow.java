@@ -161,6 +161,9 @@ public class Meow extends JavaPlugin{
 		    	  sender.sendMessage(ChatColor.GOLD + prefix + ChatColor.DARK_RED + NoPerm);
 		      }
 	 }else if(command.getName().equalsIgnoreCase("meowstop") || command.getName().equalsIgnoreCase("ms")){	 
+		 if(!(sender instanceof Player)){
+			 System.out.println("[Meow] This command cannot be runned from console.");
+		 }else{
 		 BlockerFile = new File(getDataFolder(), "blockers.yml");
 		 BlockerFileConfig = YamlConfiguration.loadConfiguration(BlockerFile);
 		 Player player = (Player)sender;
@@ -174,7 +177,7 @@ public class Meow extends JavaPlugin{
 			}
          	configPlayers.remove(playerName);
        	sender.sendMessage(ChatColor.GOLD + prefix + ChatColor.RED + SoundEnabled);	     	 
-     }else{	 
+     }else{
         	 ((List<String>) BlockerFileConfig.getList("Blockers")).add(player.getName());	  
         	 configPlayers.add(playerName);
         	 try {
@@ -184,7 +187,8 @@ public class Meow extends JavaPlugin{
  				e.printStackTrace();
  			}
         	 sender.sendMessage(ChatColor.GOLD + prefix + ChatColor.RED + SoundDisabled);
-         }
+     	 }
+		 }
      }else if(command.getName().equalsIgnoreCase("rmeow") || command.getName().equalsIgnoreCase("rm")){
     	 if(sender.hasPermission("Meow.meow")){
     		 Long diff = null;
