@@ -92,14 +92,14 @@ public class PluginConf {
 		try {
 			pm.registerEvents(plugin.OpC, plugin);
 		} catch (Exception e) {
-			System.out.println(plugin.prefix + " OnlinePlayerChecker failed to start. Please report this to JoeyCo(BukkitDev)");
+			System.out.println(plugin.prefix + " OnlinePlayerChecker failed to start");
 		}
 	}
     if(ConfigFileConfig.getBoolean("SoundOnJoin") == true){
 		try {
 		pm.registerEvents(plugin.SoJ, plugin);
 		} catch (Exception e) {
-			System.out.println(plugin.prefix + " SoundOnJoin failed to start. Please report this to JoeyCo(BukkitDev)");
+			System.out.println(plugin.prefix + " SoundOnJoin failed to start");
 		}
 	}
     if(ConfigFileConfig.getBoolean("Metrics") == true) {
@@ -107,7 +107,7 @@ public class PluginConf {
 			MetricsLite metrics = new MetricsLite(plugin);
 			metrics.start();
 		} catch (IOException e) {
-			System.out.println(plugin.prefix + " Metrics failed to start. Please report this to JoeyCo(BukkitDev)");
+			System.out.println(plugin.prefix + " Metrics failed to start");
 		}
 	} 
 	 String SoundForMeow = ConfigFileConfig.getString("ReplaceMeowWith").toLowerCase();
