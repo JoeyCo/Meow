@@ -30,9 +30,10 @@ public class PluginConf {
     	if(!BlockerFile.exists()){
     	plugin.saveResource("blockers.yml", false);
     	}
-    	plugin.saveDefaultConfig();
-    	
     	ConfigFile = new File(plugin.getDataFolder(), "config.yml");
+    	if(!ConfigFile.exists()){
+        	plugin.saveResource("config.yml", false);
+        	}
     	
     	LanguageFileConfig = YamlConfiguration.loadConfiguration(LanguageFile);
     	BlockerFileConfig = YamlConfiguration.loadConfiguration(BlockerFile);

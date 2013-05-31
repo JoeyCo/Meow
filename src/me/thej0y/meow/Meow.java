@@ -178,11 +178,9 @@ public class Meow extends JavaPlugin{
 				System.out.println("[Meow] Failed to save blocker.yml after removing a player");
 			}
          	configPlayers.remove(playerName);
-       	 saveConfig();
        	sender.sendMessage(ChatColor.GOLD + prefix + ChatColor.RED + SoundEnabled);	     	 
      }else{	 
         	 ((List<String>) BlockerFileConfig.getList("Blockers")).add(player.getName());	  
-        	 saveConfig();
         	 configPlayers.add(playerName);
         	 try {
  				BlockerFileConfig.save(BlockerFile);
