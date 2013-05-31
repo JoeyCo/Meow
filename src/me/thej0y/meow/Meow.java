@@ -80,13 +80,8 @@ public class Meow extends JavaPlugin{
  }
 
  	public void onEnable(){
- 	    try{
- 	    	pConf.loadConfiguration();
- 	    	//ConfFix.ConfigCheck();//BROKEN
- 			}catch (Exception e){
- 				System.out.println("[Meow] Something failed to load");
- 				e.printStackTrace();
- 			}
+
+ 	 pConf.loadConfiguration();
      System.out.println(prefix + "Enabled!");
  }
 
